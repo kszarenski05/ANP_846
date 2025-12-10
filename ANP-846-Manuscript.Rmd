@@ -1,7 +1,7 @@
 -----
 Title: ANP 846 Manuscript
 Purpose: This study examines the statistical significance between waist to height ratio(WHtR) and several measurements in participants (n=507) aged 18 to 67. The skeletal measurements used originate from the pelvic area with bi-iliac measurement taken from the pelvic breadth, and bi-trochanteric measuring the diameter around what is typically the widest part of the hips. 
-Publication:
+Publication: 12/10/2025 on Github kszarenski05/Pelvic_breadth
 Authors: Kaitlyn Szarenski (KS)
 Last Updated on: 2025-12-2 (KS)
 
@@ -28,7 +28,7 @@ Last Updated on: 2025-12-2 (KS)
 
 11. 2025-12-1 (KS) updated cor-cov table,created new table for age/gender, moved an unused plot to the graveyard
 
-12. 2025-12-2 (KS) c16 - Find those packages, made code that identifys each unique instance of a package use and places it in a table
+12. 2025-12-2 (KS) c16 - Find those packages, made code that identifies each unique instance of a package use and places it in a table
 
 ##### Notes: 
 Age range 18-67
@@ -943,5 +943,6 @@ cm.0
 
 accuracy.0 <- sum(diag(cm.0)) / sum(cm.0) * 100
 accuracy.0
+
 
 ```
