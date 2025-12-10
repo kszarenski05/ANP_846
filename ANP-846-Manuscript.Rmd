@@ -1,4 +1,4 @@
------
+--------------------------------------------------------------------------------
 Title: Statistical Significance of Obesity and Pelvic Breadth
 Purpose: This study examines the statistical significance between waist to height ratio(WHtR) and several measurements in participants (n=507) aged 18 to 67. The skeletal measurements used originate from the pelvic area with bi-iliac measurement taken from the pelvic breadth, and bi-trochanteric measuring the diameter around what is typically the widest part of the hips. 
 Access: github Kszarenski05/ANP_846 as of 12/10/2025
@@ -54,7 +54,7 @@ c14- Chunk 14 - next steps
 c15 - Chunk 15 - Graveyard
 c16 - Chunk 16 - Find those packages
 
------
+--------------------------------------------------------------------------------
 
 ```{r working directory}
 # Start with a clean working directory by clearing lists
@@ -944,5 +944,6 @@ cm.0
 
 accuracy.0 <- sum(diag(cm.0)) / sum(cm.0) * 100
 accuracy.0
+
 
 ```
