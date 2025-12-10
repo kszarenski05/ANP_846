@@ -465,57 +465,6 @@ billit.1
 t.test(data=bdy,Biiliac~whtrrisk)
 
 # whats next?
-###linear model
-fit.lm <- lm(whtr ~ Biiliac, data = bdy)
-plot(fit.lm)
-bdy05 <- bdy %>%
-  mutate(
-    pred_whtr = predict(fit.lm),             
-    error = whtr - pred_whtr,                
-    misclassified = ifelse(abs(error) > 0.05, "Yes", "No") 
-  )
-bdy01 <- bdy %>%
-  mutate(
-    pred_whtr = predict(fit.lm),             
-    error = whtr - pred_whtr,                
-    misclassified = ifelse(abs(error) > 0.01, "Yes", "No") 
-  )
-bdy03 <- bdy %>%
-  mutate(
-    pred_whtr = predict(fit.lm),             
-    error = whtr - pred_whtr,                
-    misclassified = ifelse(abs(error) > 0.03, "Yes", "No") 
-  )
-
-error_plot5 <- ggplot(bdy05, aes(misclassified, fill = Gender)) +
-  geom_bar(position = "dodge") +
-  theme_classic() +
-  scale_fill_manual(values = c("#fc8d62","#66c2a5")) +
-  labs(y = "Count", x = "Prediction Error > 0.05")
-
-error_plot5
-###Scrap these
-error_plot1 <- ggplot(bdy01, aes(misclassified, fill = Gender)) +
-  geom_bar(position = "dodge") +
-  theme_classic() +
-  scale_fill_manual(values = c("#fc8d62","#66c2a5")) +
-  labs(y = "Count", x = "Prediction Error > 0.01")
-error_plot3 <- ggplot(bdy03, aes(misclassified, fill = Gender)) +
-  geom_bar(position = "dodge") +
-  theme_classic() +theme(legend.position = "none")+
-  scale_fill_manual(values = c("#fc8d62","#66c2a5")) +
-  labs(y = "Count", x = "Prediction Error > 0.03")
-
-combined_plot <- error_plot5+error_plot3+error_plot1
-  plot_layout(guides = "collect") & 
-  theme(legend.position = "bottom")
-
-combined_plot
-
-#ggsave("ldamist.png", plot = ldamistakes, width = 8, height = 6, dpi = 300)
-
-summary(fit.lm)$adj.r.squared 
-
 #####LDA#####
 
 fit.18 <- lda(whtrrisk~Biiliac,data=bdy)
@@ -556,25 +505,10 @@ accuracy
 
 
 
-##Scrapped plot
-ggplot(bdy2, aes(x = LD1, fill = whtrrisk)) +
-  geom_density(alpha = 0.3, color = NA) +   # actual group density
-  geom_rug(aes(color = misclassified),
-           sides = "b", size = 1, alpha = 0.8) +
-  scale_fill_viridis_d(option = "plasma", name = "Actual Group") +
-  scale_color_manual(values = c("No" = "darkgrey", "Yes" = "red"), name = "Misclassified") +
-  theme_classic() +
-  labs(x = "Linear Discriminant 1 (LD1)",
-       y = "Density") +
-  theme(
-    plot.title = element_text(hjust = 0.5),
-    legend.position = "right"
-  )
-
 
 
 #search for packages.
-library(stringr)
+
 
 search_package_usage <- function(file, pkg, ignore_comments = TRUE) {
   # Read Rmd
@@ -749,57 +683,6 @@ billi1.10
 t.test(data=bdy,Biiliac~bmirisk)
 
 # whats next?
-###linear model
-fit.lm.0 <- lm(bmi ~ Biiliac, data = bdy)
-plot(fit.lm.0)
-bdy05.0 <- bdy %>%
-  mutate(
-    pred_bmi = predict(fit.lm.0),             
-    error = bmi - pred_bmi,                
-    misclassified = ifelse(abs(error) > 0.05, "Yes", "No") 
-  )
-bdy01.010 <- bdy %>%
-  mutate(
-    pred_bmi = predict(fit.lm.0),             
-    error = bmi - pred_bmi,                
-    misclassified = ifelse(abs(error) > 0.1, "Yes", "No") 
-  )
-bdy03.0 <- bdy %>%
-  mutate(
-    pred_bmi = predict(fit.lm.0),             
-    error = bmi - pred_bmi,                
-    misclassified = ifelse(abs(error) > 0.03, "Yes", "No") 
-  )
-
-error_plot5.0 <- ggplot(bdy05.0, aes(misclassified, fill = Gender)) +
-  geom_bar(position = "dodge") +
-  theme_classic() +
-  scale_fill_manual(values = c("#fc8d62","#66c2a5")) +
-  labs(y = "Count", x = "Prediction Error > 0.05")
-
-error_plot5.0
-
-error_plot1.010 <- ggplot(bdy01.010, aes(misclassified, fill = Gender)) +
-  geom_bar(position = "dodge") +
-  theme_classic() +
-  scale_fill_manual(values = c("#fc8d62","#66c2a5")) +
-  labs(y = "Count", x = "Prediction Error > 0.1")
-error_plot3.0 <- ggplot(bdy03.0, aes(misclassified, fill = Gender)) +
-  geom_bar(position = "dodge") +
-  theme_classic() +theme(legend.position = "none")+
-  scale_fill_manual(values = c("#fc8d62","#66c2a5")) +
-  labs(y = "Count", x = "Prediction Error > 0.03")
-
-combined_plot.0 <- error_plot5.0+error_plot3.0+error_plot1.010+
-  plot_layout(guides = "collect") & 
-  theme(legend.position = "bottom")
-
-combined_plot.0
-
-#ggsave("ldamist.png", plot = ldamistakes, width = 8, height = 6, dpi = 300)
-
-summary(fit.lm.0)$adj.r.squared 
-
 #####LDA#####
 fit.18.0 <- lda(bmirisk~Biiliac,data=bdy)
 pred1.0 <- predict(fit.18.0)
@@ -836,4 +719,5 @@ cm.0
 
 accuracy.0 <- sum(diag(cm.0)) / sum(cm.0) * 100
 accuracy.0
+
 
